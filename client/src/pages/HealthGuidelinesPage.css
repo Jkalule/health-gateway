@@ -1,0 +1,179 @@
+.guidelines-page .page-header {
+  background-color: #e74c3c;
+  padding: 4rem 0;
+  color: white;
+  margin-bottom: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.guidelines-page .page-header h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.guidelines-page .page-header .lead {
+  font-size: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.guidelines-page h2 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.guidelines-page h2:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #e74c3c;
+}
+
+.guidelines-page h3 {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+}
+
+.guidelines-page h4 {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.guidelines-page .guidelines-card {
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.guidelines-page .guidelines-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.guidelines-page .guidelines-list {
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.guidelines-page .guidelines-list li {
+  margin-bottom: 0.75rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.guidelines-page p {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.guidelines-page .accordion-button {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.guidelines-page .accordion-button:not(.collapsed) {
+  background-color: #f9e0de;
+  color: #e74c3c;
+}
+
+.guidelines-page .accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(231, 76, 60, 0.5);
+}
+
+.guidelines-page .accordion-body {
+  color: #555;
+  line-height: 1.7;
+  padding: 1.5rem;
+}
+
+.guidelines-page .table {
+  margin-bottom: 0;
+}
+
+.guidelines-page .table-primary {
+  background-color: #f9e0de;
+}
+
+.guidelines-page .table th {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.guidelines-page .table td {
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .guidelines-page .page-header {
+    padding: 3rem 0;
+  }
+  
+  .guidelines-page .page-header h1 {
+    font-size: 2.25rem;
+  }
+  
+  .guidelines-page h2 {
+    font-size: 1.75rem;
+  }
+  
+  .guidelines-page h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .guidelines-page .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .guidelines-page .page-header .lead {
+    font-size: 1.1rem;
+  }
+  
+  .guidelines-page h2 {
+    font-size: 1.5rem;
+  }
+  
+  .guidelines-page h3 {
+    font-size: 1.35rem;
+  }
+  
+  .guidelines-page h4 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .guidelines-page .page-header {
+    padding: 2.5rem 0;
+  }
+  
+  .guidelines-page .page-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .guidelines-page h2:after {
+    width: 40px;
+  }
+} 

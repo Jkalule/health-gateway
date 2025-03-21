@@ -1,0 +1,226 @@
+.dashboard-container {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  padding: 1rem 0;
+}
+
+.dashboard-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.filter-controls {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+}
+
+.filter-controls .form-group {
+  margin-bottom: 0;
+}
+
+.summary-cards .card {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.summary-cards .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card {
+  background-color: #fff;
+  border-left: 5px solid #007bff;
+}
+
+.active-card {
+  border-left-color: #ffc107;
+}
+
+.recovered-card {
+  border-left-color: #28a745;
+}
+
+.deaths-card {
+  border-left-color: #dc3545;
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.trend-indicator {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.trend-up {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.trend-down {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.chart-card, .map-card, .vaccination-card, .resource-card {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+}
+
+.chart-card .card-body, .map-card .card-body {
+  padding: 1.5rem;
+}
+
+.chart-card .card-title, .map-card .card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: #333;
+}
+
+.no-data-message {
+  padding: 2rem;
+  text-align: center;
+  color: #6c757d;
+}
+
+.vaccination-card {
+  background-color: #f8f9fa;
+}
+
+.vaccination-stat {
+  text-align: center;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.vaccination-stat h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.vaccination-stat h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #007bff;
+}
+
+.vaccination-stat p {
+  color: #6c757d;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.resource-card {
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-5px);
+}
+
+.resource-card .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.resource-card p {
+  color: #6c757d;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.timeline-container {
+  border-radius: 8px;
+  position: relative;
+  min-height: 400px;
+}
+
+.timeline-header {
+  margin-bottom: 1.5rem;
+}
+
+.timeline-header h5 {
+  color: #333;
+  font-weight: 600;
+}
+
+.timeline-chart-container {
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.badge {
+  font-weight: 500;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 20px;
+}
+
+.chart-card .text-muted {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.chart-card .badge.bg-info {
+  background-color: #17a2b8 !important;
+}
+
+.chart-card .badge.bg-primary {
+  background-color: #007bff !important;
+}
+
+@media (max-width: 768px) {
+  .timeline-container {
+    min-height: 350px;
+  }
+  
+  .timeline-chart-container {
+    height: 350px !important;
+  }
+  
+  .chart-card .card-title {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+  
+  .chart-card .badge {
+    margin-top: 0.5rem;
+  }
+  
+  .summary-cards .col-md-3 {
+    margin-bottom: 1rem;
+  }
+  
+  .vaccination-stat {
+    margin-bottom: 1rem;
+  }
+} 

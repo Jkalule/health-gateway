@@ -1,0 +1,17 @@
+{
+  "name": "uganda-health-gateway",
+  "version": "1.0.0",
+  "description": "Real-time health data and pandemic outbreak tracking across Uganda",
+  "scripts": {
+    "prestart": "npm run kill-ports",
+    "kill-ports": "npx kill-port 3000 5000 || true",
+    "start": "npx concurrently \"npm run start-frontend\" \"npm run start-backend\"",
+    "start-frontend": "cd client && npm start",
+    "start-backend": "cd server && node index.js",
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "kill-port": "^2.0.1"
+  }
+} 

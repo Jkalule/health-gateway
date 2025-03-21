@@ -1,0 +1,244 @@
+.resource-page .page-header {
+  background-color: #27ae60;
+  padding: 4rem 0;
+  color: white;
+  margin-bottom: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.resource-page .page-header h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.resource-page .page-header .lead {
+  font-size: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.resource-page h2 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.resource-page h2:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #27ae60;
+}
+
+.resource-page h3 {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.resource-page .filter-card,
+.resource-page .site-card,
+.resource-page .info-card {
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.resource-page .filter-card {
+  background-color: #f8f9fa;
+  margin-bottom: 2rem;
+}
+
+.resource-page .site-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.resource-page .site-card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.resource-page .site-card p {
+  margin-bottom: 0.75rem;
+  color: #555;
+}
+
+.resource-page .site-card i {
+  color: #27ae60;
+  width: 16px;
+}
+
+.resource-page .site-card a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.resource-page .site-card a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+.resource-page .site-card h5 {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.resource-page .site-options {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 1rem;
+}
+
+.resource-page .card-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+}
+
+.resource-page .results-count {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.resource-page .info-card {
+  background-color: #f1f9f5;
+  margin-top: 2rem;
+}
+
+.resource-page .info-card h3 {
+  color: #27ae60;
+  margin-bottom: 1rem;
+}
+
+.resource-page .info-card p {
+  color: #555;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.resource-page .info-card strong {
+  color: #2c3e50;
+}
+
+/* Tables */
+.resource-page table {
+  margin-top: 1rem;
+}
+
+.resource-page table th {
+  background-color: #f0f7ff;
+}
+
+/* Map styling */
+.resource-page .map-container {
+  height: 500px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Filter section */
+.resource-page .filter-section {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.resource-page .filter-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .resource-page .page-header {
+    padding: 3rem 0;
+  }
+  
+  .resource-page .page-header h1 {
+    font-size: 2.25rem;
+  }
+  
+  .resource-page h2 {
+    font-size: 1.5rem;
+  }
+  
+  .resource-page h3 {
+    font-size: 1.35rem;
+  }
+  
+  .resource-page .map-container {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .resource-page .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .resource-page .page-header .lead {
+    font-size: 1.1rem;
+  }
+  
+  .resource-page h2 {
+    font-size: 1.35rem;
+  }
+  
+  .resource-page h3 {
+    font-size: 1.25rem;
+  }
+  
+  .resource-page .card-footer {
+    text-align: center;
+  }
+  
+  .resource-page .card-footer .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    margin-right: 0 !important;
+  }
+  
+  .resource-page .card-footer .btn:last-child {
+    margin-bottom: 0;
+  }
+  
+  .resource-page .map-container {
+    height: 350px;
+  }
+}
+
+@media (max-width: 576px) {
+  .resource-page .page-header {
+    padding: 2.5rem 0;
+  }
+  
+  .resource-page .page-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .resource-page h2:after {
+    width: 40px;
+  }
+} 
