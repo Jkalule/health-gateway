@@ -1,0 +1,13 @@
+.health-data-grid {
+  padding: 2rem 1rem;
+}
+
+.health-data-grid .row {
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.health-data-grid .col {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}

@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const http = require('http');
-const socketIo = require('socket.io');
+const setupWebSocket = require('./src/websocket');
 const dotenv = require('dotenv');
 const cron = require('node-cron');
 
@@ -24,12 +24,6 @@ dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server, {
-  cors: {
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
-    methods: ["GET", "POST"]
-  }
-});
 
 // Middleware
 app.use(cors({
@@ -37,6 +31,9 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
+
+// Initialize WebSocket
+const io = setupWebSocket(server);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/uganda-health-gateway')
