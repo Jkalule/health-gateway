@@ -1,0 +1,33 @@
+.health-data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.health-data-grid-item {
+  height: 100%;
+}
+
+.health-data-loading,
+.health-data-error,
+.health-data-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  text-align: center;
+  color: var(--text-light);
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.health-data-error {
+  color: #dc3545;
+}
+
+@media (max-width: 768px) {
+  .health-data-grid {
+    grid-template-columns: 1fr;
+  }
+}

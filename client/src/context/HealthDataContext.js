@@ -1,10 +1,12 @@
-import React, { createContext, useState, useEffect, useContext, useCallback } from 'react';
+import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
+import io from 'socket.io-client';
 import { 
   fetchHealthData, 
   fetchDiseaseData, 
   fetchRegionalStats,
   fetchComparativeData
 } from '../api/healthData';
+import { fetchHealthGuidelines } from '../api/healthGuidelines';
 import { mockHealthData, mockVaccinationSites, mockTestingCenters } from '../utils/mockData';
 
 const HealthDataContext = createContext();
@@ -12,20 +14,22 @@ const HealthDataContext = createContext();
 export const useHealthData = () => useContext(HealthDataContext);
 
 export const HealthDataProvider = ({ children }) => {
-  const [healthData, setHealthData] = useState([]);
+  const [healthData, setHealthData] = useState({});
   const [vaccinationSites, setVaccinationSites] = useState([]);
   const [testingCenters, setTestingCenters] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [lastUpdated, setLastUpdated] = useState(null);
   const [selectedDisease, setSelectedDisease] = useState('all');
   const [selectedRegion, setSelectedRegion] = useState('all');
   const [selectedTimeRange, setSelectedTimeRange] = useState('30days');
   const [regionalStats, setRegionalStats] = useState(null);
   const [comparativeData, setComparativeData] = useState(null);
+  const [guidelines, setGuidelines] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState(null);
 
-  // Load initial data
   useEffect(() => {
+    const socket = io(process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000');
+
     const loadData = async () => {
       try {
         setLoading(true);
@@ -49,7 +53,7 @@ export const HealthDataProvider = ({ children }) => {
           const data = await fetchHealthData();
           
           // Process and set the data
-          const processedData = [];
+          const processedData = {};
           
           // Transform the API response to match our frontend data structure
           if (data.diseases) {
@@ -61,7 +65,10 @@ export const HealthDataProvider = ({ children }) => {
                 const regionData = diseaseData.regionData?.[region];
                 
                 if (regionData) {
-                  processedData.push({
+                  if (!processedData[diseaseName]) {
+                    processedData[diseaseName] = [];
+                  }
+                  processedData[diseaseName].push({
                     id: `${diseaseName}-${region}`,
                     disease: diseaseName,
                     region: region,
@@ -102,10 +109,27 @@ export const HealthDataProvider = ({ children }) => {
     };
     
     loadData();
-  }, []);
+
+    // Listen for real-time updates
+    socket.on('data-update', async () => {
+      console.log('Received data update notification');
+      await loadData();
+    });
+
+    socket.on('new-alert', (alert) => {
+      // Update data if alert indicates significant changes
+      if (alert.type === 'outbreak' || alert.type === 'update') {
+        loadData();
+      }
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, [selectedDisease]);
 
   // Load disease-specific data when selection changes
-  const loadDiseaseData = useCallback(async (disease, region, timeRange) => {
+  const loadDiseaseData = async (disease, region, timeRange) => {
     if (disease === 'all') return;
     
     try {
@@ -178,10 +202,10 @@ export const HealthDataProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  }, []);
-  
+  };
+
   // Load regional statistics
-  const loadRegionalStats = useCallback(async (disease = 'all', timeRange = '30days') => {
+  const loadRegionalStats = async (disease = 'all', timeRange = '30days') => {
     try {
       setLoading(true);
       
@@ -267,10 +291,10 @@ export const HealthDataProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  }, []);
-  
+  };
+
   // Load comparative data for multiple diseases
-  const loadComparativeData = useCallback(async (diseases = [], timeRange = '30days') => {
+  const loadComparativeData = async (diseases = [], timeRange = '30days') => {
     try {
       setLoading(true);
       
@@ -353,7 +377,7 @@ export const HealthDataProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  };
 
   // Filter health data by region, disease, or date range
   const filterHealthData = useCallback(({ 
@@ -361,20 +385,59 @@ export const HealthDataProvider = ({ children }) => {
     disease = selectedDisease, 
     timeRange = selectedTimeRange 
   } = {}) => {
-    return healthData.filter(item => {
+    return Object.values(healthData).flat().filter(item => {
       if (region !== 'all' && item.region !== region) return false;
       if (disease !== 'all' && item.disease !== disease) return false;
       return true;
     });
   }, [healthData, selectedRegion, selectedDisease, selectedTimeRange]);
 
+  const loadGuidelines = async (disease) => {
+    try {
+      setLoading(true);
+      
+      // Use mock data in development or if API fails
+      if (process.env.NODE_ENV === 'development') {
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 800));
+        
+        // Return mock guidelines
+        return {
+          disease,
+          guidelines: 'Mock guidelines for ' + disease
+        };
+      }
+      
+      try {
+        const data = await fetchHealthGuidelines(disease);
+        return data;
+      } catch (apiError) {
+        console.warn(`API fetch failed for ${disease} guidelines, falling back to mock data:`, apiError);
+        
+        // Return mock guidelines
+        return {
+          disease,
+          guidelines: 'Mock guidelines for ' + disease
+        };
+      }
+    } catch (error) {
+      console.error(`Error loading guidelines for ${disease}:`, error);
+      setError(error.message);
+      
+      // Return mock guidelines on error
+      return {
+        disease,
+        guidelines: 'Mock guidelines for ' + disease
+      };
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const value = {
     healthData,
     vaccinationSites,
     testingCenters,
-    loading,
-    error,
-    lastUpdated,
     selectedDisease,
     setSelectedDisease,
     selectedRegion,
@@ -383,10 +446,15 @@ export const HealthDataProvider = ({ children }) => {
     setSelectedTimeRange,
     regionalStats,
     comparativeData,
+    guidelines,
+    loading,
+    error,
+    lastUpdated,
     filterHealthData,
     loadDiseaseData,
     loadRegionalStats,
-    loadComparativeData
+    loadComparativeData,
+    loadGuidelines
   };
 
   return (

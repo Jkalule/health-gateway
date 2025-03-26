@@ -11,12 +11,15 @@ const healthDataRoutes = require('./routes/healthDataRoutes');
 const alertRoutes = require('./routes/alertRoutes');
 const vaccinationRoutes = require('./routes/vaccinationRoutes');
 const testingCenterRoutes = require('./routes/testingCenterRoutes');
+const healthGuidelineRoutes = require('./routes/healthGuidelineRoutes');
 
 // Import data fetchers
 const { 
   fetchWHOData, 
   fetchMOHData, 
   fetchUNICEFData,
+  fetchCDCData,
+  fetchAfricaCDCData,
   processAndStoreData
 } = require('./jobs/dataFetcher');
 
@@ -45,6 +48,7 @@ app.use('/api/health-data', healthDataRoutes);
 app.use('/api/alerts', alertRoutes);
 app.use('/api/vaccination-sites', vaccinationRoutes);
 app.use('/api/testing-centers', testingCenterRoutes);
+app.use('/api/health-guidelines', healthGuidelineRoutes);
 
 // Socket connection for real-time alerts
 io.on('connection', (socket) => {
@@ -65,24 +69,27 @@ io.on('connection', (socket) => {
 app.set('io', io);
 
 // Schedule data fetching jobs
-// Every hour fetch data from various sources
-cron.schedule('0 * * * *', async () => {
+// Fetch data every 15 minutes
+cron.schedule('*/15 * * * *', async () => {
   try {
-    console.log('Fetching data from WHO...');
-    const whoData = await fetchWHOData();
+    console.log('Fetching health data from all sources...');
+    const [whoData, mohData, unicefData, cdcData, africaCdcData] = await Promise.all([
+      fetchWHOData(),
+      fetchMOHData(),
+      fetchUNICEFData(),
+      fetchCDCData(),
+      fetchAfricaCDCData()
+    ]);
+
+    await processAndStoreData(whoData, mohData, unicefData, cdcData, africaCdcData);
     
-    console.log('Fetching data from Ministry of Health...');
-    const mohData = await fetchMOHData();
-    
-    console.log('Fetching data from UNICEF...');
-    const unicefData = await fetchUNICEFData();
-    
-    // Process and store the fetched data
-    await processAndStoreData(whoData, mohData, unicefData);
-    
-    console.log('Data update completed successfully');
+    // Notify all connected clients about the data update
+    io.emit('data-update', {
+      timestamp: new Date(),
+      message: 'Health data has been updated'
+    });
   } catch (error) {
-    console.error('Error in scheduled data update:', error);
+    console.error('Error in scheduled data fetch:', error);
   }
 });
 

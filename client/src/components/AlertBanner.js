@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
-const AlertBanner = ({ alerts }) => {
+const AlertBanner = ({ alerts, onViewDetails }) => {
   const [currentAlertIndex, setCurrentAlertIndex] = useState(0);
   const [dismissed, setDismissed] = useState(false);
 
@@ -23,11 +22,22 @@ const AlertBanner = ({ alerts }) => {
     setDismissed(true);
   };
 
+  const getSeverityClass = (severity) => {
+    switch (severity) {
+      case 'high':
+        return 'severity-critical';
+      case 'medium':
+        return 'severity-warning';
+      default:
+        return 'severity-info';
+    }
+  };
+
   return (
-    <div className="alert-banner severity-critical">
+    <div className={`alert-banner ${getSeverityClass(currentAlert.severity)}`}>
       <div className="alert-content">
-        <span className="alert-label">Critical Health Alert:</span>
-        <span className="alert-message">{currentAlert.title}</span>
+        <span className="alert-label">Health Alert:</span>
+        <span className="alert-message">{currentAlert.message}</span>
         {alerts.length > 1 && (
           <div className="alert-counter">
             {currentAlertIndex + 1} of {alerts.length}
@@ -46,15 +56,22 @@ const AlertBanner = ({ alerts }) => {
             </button>
           </>
         )}
-        <Link to="/alerts" className="alert-details-link">
+        <button 
+          className="alert-details-button" 
+          onClick={() => onViewDetails(currentAlert)}
+        >
           View Details
-        </Link>
-        <button className="alert-dismiss-button" onClick={handleDismiss} aria-label="Dismiss alerts">
-          ✕
+        </button>
+        <button 
+          className="alert-dismiss-button" 
+          onClick={handleDismiss} 
+          aria-label="Dismiss alert"
+        >
+          ×
         </button>
       </div>
     </div>
   );
 };
 
-export default AlertBanner; 
+export default AlertBanner;

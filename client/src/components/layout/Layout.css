@@ -1,0 +1,18 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  margin-top: 120px; /* Header height (top-header + main-nav) */
+  background-color: #f8f9fa;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: 150px; /* Adjusted for mobile header height */
+  }
+}

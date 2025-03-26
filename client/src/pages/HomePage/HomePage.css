@@ -1,18 +1,127 @@
 .home-page {
-  padding: 2rem 0;
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background-color: #ffffff;
 }
 
-.home-page h1 {
-  color: #2c3e50;
+.hero-section {
+  background: linear-gradient(135deg, #0066cc 0%, #1a237e 100%);
+  color: white;
+  padding: 6rem 0;
+  margin-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/assets/pattern.svg') center/cover;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.accent-dot {
+  color: #00e676;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.main-cta {
+  background-color: #00e676 !important;
+  border-color: #00e676 !important;
+  padding: 0.8rem 2rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease !important;
+}
+
+.main-cta:hover {
+  background-color: #00c853 !important;
+  border-color: #00c853 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 230, 118, 0.2);
+}
+
+.secondary-cta {
+  border-width: 2px !important;
+  padding: 0.8rem 2rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease !important;
+}
+
+.secondary-cta:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-2px);
+}
+
+.main-content {
+  padding: 4rem 0;
+}
+
+.section-title {
+  color: #1a237e;
+  font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
-.home-page .lead {
-  color: #6c757d;
+.section-subtitle {
+  color: #546e7a;
   font-size: 1.2rem;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 4rem 0;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
 }

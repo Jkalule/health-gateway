@@ -1,47 +1,41 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HealthDataProvider } from './context/HealthDataContext';
-import { AlertProvider } from './context/AlertContext';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import { NotificationProvider } from './context/NotificationContext';
+import ErrorBoundary from './components/common/ErrorBoundary/ErrorBoundary';
+import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
 import Dashboard from './pages/Dashboard';
-import AlertsPage from './pages/AlertsPage';
+import HealthGuidelines from './pages/HealthGuidelines';
 import RegionalDataPage from './pages/RegionalDataPage';
 import VaccinationSitesPage from './pages/VaccinationSitesPage';
 import TestingCentersPage from './pages/TestingCentersPage';
-import HealthGuidelinesPage from './pages/HealthGuidelinesPage';
 import AboutPage from './pages/AboutPage';
+import { ROUTES } from './constants/routes.constants';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
   return (
-    <Router>
-      <HealthDataProvider>
-        <AlertProvider>
-          <div className="app-container">
-            <Navbar />
-            <main className="main-content">
+    <ErrorBoundary>
+      <NotificationProvider>
+        <HealthDataProvider>
+          <Router>
+            <Layout>
               <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/alerts" element={<AlertsPage />} />
-                
-                {/* Resource Routes */}
-                <Route path="/resources/regional-data" element={<RegionalDataPage />} />
-                <Route path="/resources/vaccination" element={<VaccinationSitesPage />} />
-                <Route path="/resources/testing" element={<TestingCentersPage />} />
-                <Route path="/resources/guidelines" element={<HealthGuidelinesPage />} />
-                
-                <Route path="/about" element={<AboutPage />} />
+                <Route path={ROUTES.HOME} element={<HomePage />} />
+                <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
+                <Route path={ROUTES.HEALTH_GUIDELINES} element={<HealthGuidelines />} />
+                <Route path={ROUTES.RESOURCES.REGIONAL_DATA} element={<RegionalDataPage />} />
+                <Route path={ROUTES.RESOURCES.VACCINATION} element={<VaccinationSitesPage />} />
+                <Route path={ROUTES.RESOURCES.TESTING} element={<TestingCentersPage />} />
+                <Route path={ROUTES.ABOUT} element={<AboutPage />} />
               </Routes>
-            </main>
-            <Footer />
-          </div>
-        </AlertProvider>
-      </HealthDataProvider>
-    </Router>
+            </Layout>
+          </Router>
+        </HealthDataProvider>
+      </NotificationProvider>
+    </ErrorBoundary>
   );
 }
 

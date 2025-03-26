@@ -1,3 +1,137 @@
+.health-guidelines-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.guidelines-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.guidelines-header h1 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.disease-selector {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  background-color: white;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.disease-selector:hover {
+  border-color: #2980b9;
+  background-color: #f8f9fa;
+}
+
+.disease-selector:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.guidelines-content {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.guidelines-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.guidelines-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.guidelines-section h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.guidelines-section.overview {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+
+.guidelines-section.overview p {
+  color: #2c3e50;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.guidelines-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.guidelines-section li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.5;
+  color: #34495e;
+}
+
+.guidelines-section li::before {
+  content: "•";
+  color: #3498db;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+.guidelines-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.guidelines-footer p {
+  margin: 0.25rem 0;
+}
+
+.loading, .error, .no-guidelines {
+  text-align: center;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loading {
+  color: #3498db;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+.no-guidelines {
+  color: #7f8c8d;
+}
+
 .guidelines-page .page-header {
   background-color: #e74c3c;
   padding: 4rem 0;
@@ -96,6 +230,7 @@
 }
 
 .guidelines-page .accordion-button:focus {
+  outline: none;
   box-shadow: none;
   border-color: rgba(231, 76, 60, 0.5);
 }
@@ -124,56 +259,27 @@
 }
 
 /* Responsive */
-@media (max-width: 992px) {
-  .guidelines-page .page-header {
-    padding: 3rem 0;
-  }
-  
-  .guidelines-page .page-header h1 {
-    font-size: 2.25rem;
-  }
-  
-  .guidelines-page h2 {
-    font-size: 1.75rem;
-  }
-  
-  .guidelines-page h3 {
-    font-size: 1.5rem;
-  }
-}
-
 @media (max-width: 768px) {
-  .guidelines-page .page-header h1 {
-    font-size: 2rem;
+  .health-guidelines-container {
+    padding: 1rem;
   }
-  
-  .guidelines-page .page-header .lead {
-    font-size: 1.1rem;
+
+  .guidelines-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
   }
-  
-  .guidelines-page h2 {
-    font-size: 1.5rem;
+
+  .guidelines-content {
+    padding: 1rem;
   }
-  
-  .guidelines-page h3 {
-    font-size: 1.35rem;
+
+  .guidelines-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
   }
-  
-  .guidelines-page h4 {
-    font-size: 1.2rem;
+
+  .guidelines-section h2 {
+    font-size: 1.25rem;
   }
 }
-
-@media (max-width: 576px) {
-  .guidelines-page .page-header {
-    padding: 2.5rem 0;
-  }
-  
-  .guidelines-page .page-header h1 {
-    font-size: 1.75rem;
-  }
-  
-  .guidelines-page h2:after {
-    width: 40px;
-  }
-} 

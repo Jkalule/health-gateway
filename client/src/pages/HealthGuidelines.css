@@ -1,0 +1,399 @@
+.health-guidelines {
+  padding: 2rem 0;
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 60px);
+  margin-top: 60px;
+}
+
+.page-title {
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.page-description {
+  color: #6c757d;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+
+.guidelines-container {
+  padding: 2rem 0;
+  margin-top: 60px;
+}
+
+.guidelines-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.guidelines-header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 1rem;
+}
+
+.guidelines-header p {
+  font-size: 1.1rem;
+  color: #6c757d;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.filters-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+}
+
+.search-box {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .search-box {
+    margin-bottom: 0;
+  }
+}
+
+.search-box .input-group-text {
+  background-color: white;
+  border-right: none;
+}
+
+.search-box .form-control {
+  border-left: none;
+}
+
+.search-box .form-control:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+.category-select {
+  height: 100%;
+}
+
+.disease-grid {
+  margin-top: 2rem;
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  color: #6c757d;
+}
+
+.no-results p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Search Bar Styles */
+.search-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+}
+
+.search-input {
+  padding-left: 2.5rem;
+  border-radius: 2rem;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Navigation Styles */
+.guidelines-nav {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nav-pills .nav-link {
+  color: #495057;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.nav-pills .nav-link:hover {
+  background-color: #e9ecef;
+  transform: translateX(5px);
+}
+
+.nav-pills .nav-link.active {
+  background-color: #0d6efd;
+  color: white;
+  transform: translateX(5px);
+}
+
+.nav-pills .nav-link svg {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Disease Header Styles */
+.disease-header {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.disease-icon {
+  font-size: 2rem;
+  color: #0d6efd;
+}
+
+.disease-meta {
+  margin-top: 1rem;
+}
+
+.severity-badge,
+.urgency-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.severity-badge {
+  background-color: #dc3545;
+  color: white;
+}
+
+.urgency-badge {
+  background-color: #ffc107;
+  color: #000;
+}
+
+/* Accordion Styles */
+.guidelines-accordion .accordion-item {
+  border: none;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-button {
+  padding: 1.25rem;
+  background-color: #fff;
+  font-weight: 500;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #e7f1ff;
+  color: #0d6efd;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(13, 110, 253, 0.25);
+}
+
+.accordion-body {
+  background-color: #fff;
+  padding: 1.5rem;
+}
+
+.guidelines-content {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.guidelines-content p {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+/* Info Box Styles */
+.info-box {
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  border-radius: 0.5rem;
+  color: #842029;
+}
+
+.info-box h5 {
+  color: #842029;
+  margin-bottom: 0.5rem;
+}
+
+.info-box .btn-danger {
+  background-color: #dc3545;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  transition: all 0.3s ease;
+}
+
+.info-box .btn-danger:hover {
+  background-color: #bb2d3b;
+  transform: translateY(-2px);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .guidelines-container {
+    margin-top: 40px;
+  }
+
+  .guidelines-nav {
+    margin-bottom: 2rem;
+  }
+
+  .sticky-top {
+    position: relative;
+    top: 0;
+  }
+
+  .disease-header {
+    padding: 1rem;
+  }
+
+  .disease-icon {
+    font-size: 1.5rem;
+  }
+
+  .severity-badge,
+  .urgency-badge {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Additional Styles */
+.section-title {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.guideline-card {
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 1.5rem;
+}
+
+.guideline-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.guideline-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.guideline-card .card-title {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.guideline-card .card-text {
+  color: #6c757d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.sticky-top {
+  top: 80px;
+  z-index: 1000;
+}
+
+.accordion-header span {
+  font-size: 1.2rem;
+}
+
+.accordion-body {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+}
+
+h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .health-guidelines {
+    padding: 1rem 0;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+  }
+
+  .page-description {
+    font-size: 1rem;
+  }
+
+  .guidelines-nav {
+    margin-bottom: 1.5rem;
+  }
+
+  .nav-pills {
+    flex-direction: row !important;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 0.5rem;
+  }
+
+  .nav-pills .nav-item {
+    margin-right: 0.5rem;
+  }
+
+  .nav-pills .nav-link {
+    padding: 0.5rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .guidelines-container {
+    margin-top: 40px;
+  }
+
+  .sticky-top {
+    position: relative;
+    top: 0;
+    margin-bottom: 1rem;
+  }
+}

@@ -4,6 +4,7 @@ const DiseaseData = require('../models/DiseaseData');
 const Alert = require('../models/Alert');
 const VaccinationSite = require('../models/VaccinationSite');
 const TestingCenter = require('../models/TestingCenter');
+const HealthGuideline = require('../models/HealthGuideline');
 
 // Fetch data from WHO
 exports.fetchWHOData = async () => {
@@ -179,8 +180,127 @@ exports.fetchUNICEFData = async () => {
   }
 };
 
+// Fetch data from CDC
+exports.fetchCDCData = async () => {
+  try {
+    console.log('Simulating CDC API call');
+    return {
+      diseases: {
+        'covid-19': {
+          guidelines: {
+            signs: ['Fever', 'Cough', 'Fatigue'],
+            symptoms: ['Loss of taste/smell', 'Difficulty breathing', 'Body aches'],
+            prevention: ['Wear masks', 'Social distancing', 'Regular hand washing'],
+            firstAid: ['Rest', 'Hydration', 'Monitor oxygen levels']
+          }
+        },
+        'ebola': {
+          guidelines: {
+            signs: ['Sudden fever', 'Severe headache', 'Muscle pain'],
+            symptoms: ['Vomiting', 'Diarrhea', 'Internal bleeding'],
+            prevention: ['Avoid contact with infected', 'Practice proper hygiene', 'Use protective equipment'],
+            firstAid: ['Seek immediate medical attention', 'Isolate patient', 'Maintain hydration']
+          }
+        }
+      }
+    };
+  } catch (error) {
+    console.error('Error fetching CDC data:', error);
+    throw error;
+  }
+};
+
+// Fetch data from Africa CDC
+exports.fetchAfricaCDCData = async () => {
+  try {
+    console.log('Simulating Africa CDC API call');
+    return {
+      uganda: {
+        diseases: {
+          'covid-19': {
+            weeklyStats: {
+              newCases: 127,
+              recoveries: 198,
+              deaths: 3
+            },
+            vaccination: {
+              totalDoses: 28945721,
+              fullyVaccinated: 11892341
+            }
+          },
+          'ebola': {
+            weeklyStats: {
+              newCases: 0,
+              recoveries: 0,
+              deaths: 0
+            },
+            outbreakStatus: 'contained'
+          }
+        }
+      }
+    };
+  } catch (error) {
+    console.error('Error fetching Africa CDC data:', error);
+    throw error;
+  }
+};
+
+// Process and store health guidelines
+exports.processAndStoreGuidelines = async (cdcData) => {
+  try {
+    for (const [disease, data] of Object.entries(cdcData.diseases)) {
+      const guideline = {
+        disease,
+        signs: data.guidelines.signs,
+        symptoms: data.guidelines.symptoms,
+        preventionMeasures: data.guidelines.prevention,
+        firstAid: data.guidelines.firstAid,
+        source: 'CDC',
+        lastUpdated: new Date()
+      };
+
+      await HealthGuideline.findOneAndUpdate(
+        { disease },
+        guideline,
+        { upsert: true, new: true }
+      );
+    }
+  } catch (error) {
+    console.error('Error processing guidelines:', error);
+    throw error;
+  }
+};
+
+const originalProcessAndStoreData = exports.processAndStoreData;
+
+exports.processAndStoreData = async (whoData, mohData, unicefData, cdcData, africaCdcData) => {
+  // Process original data
+  await originalProcessAndStoreData(whoData, mohData, unicefData);
+  
+  // Process CDC guidelines
+  if (cdcData) {
+    await processAndStoreGuidelines(cdcData);
+  }
+
+  // Process Africa CDC data and create alerts if necessary
+  if (africaCdcData && africaCdcData.uganda) {
+    for (const [disease, data] of Object.entries(africaCdcData.uganda.diseases)) {
+      if (data.weeklyStats.newCases > 0) {
+        await Alert.create({
+          type: 'outbreak',
+          disease,
+          message: `New ${disease} cases reported: ${data.weeklyStats.newCases}`,
+          severity: data.weeklyStats.newCases > 100 ? 'high' : 'medium',
+          region: 'all',
+          source: 'AFRICA_CDC'
+        });
+      }
+    }
+  }
+};
+
 // Process and store fetched data
-exports.processAndStoreData = async (whoData, mohData, unicefData) => {
+exports.originalProcessAndStoreData = async (whoData, mohData, unicefData) => {
   try {
     // Merge data from different sources with precedence
     // (WHO data is generally considered more reliable globally,

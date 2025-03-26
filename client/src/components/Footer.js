@@ -13,13 +13,13 @@ const Footer = () => {
           <Col lg={4} md={6} className="mb-4 mb-md-0">
             <h5 className="footer-heading">Uganda Health Gateway</h5>
             <p className="footer-description">
-              Real-time health data and pandemic outbreak tracking across Uganda.
-              Stay informed about disease outbreaks and health alerts.
+              Your trusted source for health information and disease tracking.
+              Access real-time updates and comprehensive health guidelines.
             </p>
           </Col>
           
-          <Col lg={2} md={6} className="mb-4 mb-md-0">
-            <h5 className="footer-heading">Navigation</h5>
+          <Col lg={3} md={6} className="mb-4 mb-md-0">
+            <h5 className="footer-heading">Quick Links</h5>
             <ul className="footer-links">
               <li>
                 <Link to="/">Home</Link>
@@ -28,7 +28,7 @@ const Footer = () => {
                 <Link to="/dashboard">Dashboard</Link>
               </li>
               <li>
-                <Link to="/alerts">Alerts</Link>
+                <Link to="/health-guidelines">Health Guidelines</Link>
               </li>
               <li>
                 <Link to="/about">About</Link>
@@ -48,37 +48,29 @@ const Footer = () => {
               <li>
                 <Link to="/resources/testing">Testing Centers</Link>
               </li>
-              <li>
-                <Link to="/resources/guidelines">Health Guidelines</Link>
-              </li>
             </ul>
           </Col>
-          
-          <Col lg={3} md={6}>
+
+          <Col lg={2} md={6} className="mb-4 mb-md-0">
             <h5 className="footer-heading">Contact</h5>
-            <ul className="footer-links contact-links">
+            <ul className="footer-links">
               <li>
-                <i className="bi bi-telephone"></i> 0800-100-066
+                <a href="tel:0800100066">Hotline: 0800-100-066</a>
               </li>
               <li>
-                <i className="bi bi-envelope"></i> info@health.go.ug
-              </li>
-              <li>
-                <i className="bi bi-geo-alt"></i> Kampala, Uganda
+                <a href="mailto:info@health.go.ug">info@health.go.ug</a>
               </li>
             </ul>
           </Col>
         </Row>
         
-        <div className="footer-bottom">
-          <p className="mb-0">
-            &copy; {currentYear} Uganda Health Gateway. All rights reserved.
-          </p>
-          <div className="footer-bottom-links">
-            <Link to="/privacy">Privacy Policy</Link>
-            <Link to="/terms">Terms of Use</Link>
-          </div>
-        </div>
+        <Row className="mt-4">
+          <Col className="text-center">
+            <p className="copyright">
+              &copy; {currentYear} Uganda Health Gateway. All rights reserved.
+            </p>
+          </Col>
+        </Row>
       </Container>
     </footer>
   );

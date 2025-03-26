@@ -1,0 +1,123 @@
+.disease-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  height: 100%;
+}
+
+.disease-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.disease-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.disease-icon {
+  font-size: 2rem;
+  color: #0d6efd;
+  margin-right: 1rem;
+}
+
+.disease-meta {
+  text-align: right;
+}
+
+.severity-indicator {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.severity-indicator.high {
+  background-color: #dc3545;
+  color: white;
+}
+
+.severity-indicator.very-high {
+  background-color: #721c24;
+  color: white;
+}
+
+.severity-indicator.moderate {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.severity-indicator.moderate-to-high {
+  background-color: #fd7e14;
+  color: white;
+}
+
+.disease-card .card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.disease-card .card-subtitle {
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.disease-card .card-text {
+  font-size: 0.9rem;
+  color: #495057;
+  margin-bottom: 1rem;
+}
+
+.transmission-list {
+  margin-bottom: 1rem;
+}
+
+.transmission-list ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0 0 0;
+}
+
+.transmission-list li {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 0.25rem;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.transmission-list li:before {
+  content: "•";
+  position: absolute;
+  left: 0.5rem;
+  color: #0d6efd;
+}
+
+.disease-card .card-footer {
+  background-color: transparent;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+}
+
+.disease-card .card-footer small {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .disease-card {
+    margin-bottom: 1rem;
+  }
+  
+  .disease-icon {
+    font-size: 1.5rem;
+  }
+  
+  .disease-card .card-title {
+    font-size: 1.1rem;
+  }
+}
