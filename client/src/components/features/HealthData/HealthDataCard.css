@@ -1,18 +1,30 @@
 .health-data-card {
   height: 100%;
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.health-data-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
 }
 
 .health-data-content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding: 1.5rem;
 }
 
 .health-data-image {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
   overflow: hidden;
+  aspect-ratio: 16/9;
   border-radius: 4px;
 }
 
@@ -26,27 +38,28 @@
   transition: transform 0.3s ease;
 }
 
-.health-data-card:hover .health-data-image img {
-  transform: scale(1.05);
-}
-
 .health-data-info {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  margin-top: 1rem;
 }
 
 .health-data-title {
   margin: 0;
   font-size: 1.25rem;
-  color: var(--secondary-color);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
 }
 
 .health-data-description {
   margin: 0;
-  color: var(--text-light);
+  color: var(--text-secondary);
   line-height: 1.5;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
 }
 
 .health-data-stats {
@@ -54,6 +67,8 @@
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1rem;
   margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color-light);
 }
 
 .stat-item {
@@ -66,13 +81,46 @@
 .stat-value {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--primary-color);
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
 }
 
 .stat-label {
-  font-size: 0.875rem;
-  color: var(--text-light);
+  font-size: 0.75rem;
+  color: var(--text-muted);
   margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.health-data-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-high {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger-dark);
+}
+
+.status-medium {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning-dark);
+}
+
+.status-low {
+  background-color: var(--color-success-light);
+  color: var(--color-success-dark);
 }
 
 @media (min-width: 768px) {
@@ -82,7 +130,7 @@
 
   .health-data-image {
     width: 200px;
-    padding-top: 150px; /* Fixed height */
+    aspect-ratio: 3/4;
     flex-shrink: 0;
   }
 

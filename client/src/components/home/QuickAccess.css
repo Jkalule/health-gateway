@@ -1,0 +1,124 @@
+.quick-access {
+  margin: 3rem 0;
+  padding: 3rem;
+  background-color: var(--bg-light);
+  border-radius: 12px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-header h2 {
+  color: var(--text-primary);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.section-description {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.quick-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.quick-tool-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: var(--bg-white);
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quick-tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tool-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  font-size: 1.5rem;
+}
+
+.quick-tool-card[data-color="blue"] .tool-icon {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.quick-tool-card[data-color="green"] .tool-icon {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.quick-tool-card[data-color="purple"] .tool-icon {
+  background-color: #f3ebff;
+  color: #6941c6;
+}
+
+.quick-tool-card[data-color="red"] .tool-icon {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.quick-tool-card[data-color="orange"] .tool-icon {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning-dark);
+}
+
+.quick-tool-card[data-color="teal"] .tool-icon {
+  background-color: var(--color-info-light);
+  color: var(--color-info);
+}
+
+.tool-content {
+  flex: 1;
+}
+
+.tool-content h3 {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.tool-content p {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .quick-access {
+    padding: 2rem 1.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+  }
+
+  .quick-tools-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -4,6 +4,7 @@ import Card from '../../common/Card/Card';
 import Button from '../../common/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import OptimizedImage from '../../common/OptimizedImage';
 import './HealthDataCard.css';
 
 const HealthDataCard = ({
@@ -12,7 +13,8 @@ const HealthDataCard = ({
   imageUrl,
   stats,
   linkTo,
-  className = ''
+  className = '',
+  onClick
 }) => {
   return (
     <Card 
@@ -29,10 +31,16 @@ const HealthDataCard = ({
         )
       }
     >
-      <div className="health-data-content">
+      <div className="health-data-content" onClick={onClick}>
         {imageUrl && (
           <div className="health-data-image">
-            <img src={imageUrl} alt={title} />
+            <OptimizedImage
+              src={imageUrl}
+              alt={title}
+              effect="blur"
+              width={400}
+              className="card-img"
+            />
           </div>
         )}
         <div className="health-data-info">
@@ -65,7 +73,8 @@ HealthDataCard.propTypes = {
     })
   ),
   linkTo: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 export default HealthDataCard;

@@ -3,11 +3,17 @@
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   border: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .health-info-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .card-image-container {
@@ -47,11 +53,11 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
-  color: #2c3e50;
+  color: var(--text-primary);
 }
 
 .card-text {
-  color: #34495e;
+  color: var(--text-secondary);
   margin-bottom: 1rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -67,6 +73,8 @@
   align-items: center;
   padding-top: 1rem;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-light);
+  border-top: 1px solid var(--border-color-light);
 }
 
 .text-muted {
